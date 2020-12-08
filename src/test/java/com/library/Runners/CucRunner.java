@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
         plugin = "html:target/cucumber-report.html",
         features = "src\\test\\resources\\Features", //path of the content root
         glue ="com\\library\\StepDefinitions", // source root
-        tags= "@AC-6",
-        dryRun= false
+        tags= "@US1-AC2",
+        dryRun=false
 )
 
 

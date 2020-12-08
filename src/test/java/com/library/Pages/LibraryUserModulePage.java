@@ -53,11 +53,14 @@ public class LibraryUserModulePage {
     @FindBy(xpath = "//textarea[@id='address']")
     public WebElement address;
 
-    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    @FindBy(xpath = "//button[.='Save changes']")
     public WebElement saveButton;
 
     @FindBy(xpath = "//i[@class='fa fa-angle-right']")
     public WebElement forwardButton;
+
+    @FindBy(xpath = "//input[@class='form-control input-sm input-small input-inline']")
+    public WebElement searchButton;
 
 
 

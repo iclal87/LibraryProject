@@ -1,18 +1,20 @@
 package com.library.Utilities;
 
+import com.library.Utilities.ConfigurationReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Driver {
-    private static WebDriver driver;
-
+public class Driver{
     private Driver(){}
 
-
+    private static WebDriver driver;
 
     public static WebDriver getDriver(){
 
@@ -32,6 +34,18 @@ public class Driver {
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
+
+                case "remote-chrome":
+                    try {
+                        //ChromeOptions chromeOptions = new ChromeOptions();
+                        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                        desiredCapabilities.setBrowserName("chrome");
+                        URL gridUrl = new URL("http://3.89.71.167:8081/wd/hub");
+                        driver = new RemoteWebDriver(gridUrl,desiredCapabilities);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
             }
         }
         return driver;
@@ -43,5 +57,4 @@ public class Driver {
             driver = null;
         }
     }
-
 }
